@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Note = require("../models/Notes");
+const Users = require("../models/User");
 const fetchuser = require("../middleware/fetchuser");
 const { validate } = require("../models/User");
 const { body, validationResult } = require("express-validator");
@@ -9,7 +10,19 @@ const { body, validationResult } = require("express-validator");
 router.get("/fetchallnotes", fetchuser, async (req, res) => {
   try {
     const notes = await Note.find({ user: req.user.id });
+
     res.json(notes);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal error occured");
+  }
+});
+
+// ROUTE x : Get user details  -> GET request..
+router.get("/fetchUserName", fetchuser, async (req, res) => {
+  try {
+    const user = await Users.findById(req.user.id);
+    res.json(user);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal error occured");
