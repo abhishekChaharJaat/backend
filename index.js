@@ -4,7 +4,7 @@ const cors = require("cors");
 connectToMongo();
 
 const app = express();
-const port = "https://inotebook-backend-6f8o.onrender.com/";
+const port = 2000;
 app.use(cors());
 app.use(express.json());
 
