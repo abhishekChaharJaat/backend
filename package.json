@@ -4,7 +4,7 @@
   "description": "backend-api",
   "main": "index.js",
   "scripts": {
-    "dev": "npm index.js",
+    "start": "nodemon index.js",
     "build": "npm i"
   },
   "author": "Jaat",
